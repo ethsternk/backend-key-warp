@@ -7,12 +7,12 @@ alphabet = string.ascii_letters + string.digits
 def main():
     valid_key = generate_key()
     print('valid key - %s' % valid_key)
-    valid_key_result = test_key(valid_key)
+    valid_key_result = validate_key(valid_key)
     print('valid key test - %s' % valid_key_result)
 
     random_key = ''.join(random.choice(alphabet) for i in range(12))
     print('random key - %s' % random_key)
-    random_key_result = test_key(random_key)
+    random_key_result = validate_key(random_key)
     print('random key test - %s' % random_key_result)
 
 
@@ -30,7 +30,7 @@ def generate_key():
     return key
 
 
-def test_key(key):
+def validate_key(key):
     if (
         not sum(alphabet.index(a) for a in key) % 10
         and alphabet.index(key[0]) - alphabet.index(key[3]) > 24
